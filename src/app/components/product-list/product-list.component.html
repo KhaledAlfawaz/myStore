@@ -1,0 +1,12 @@
+<div class="product-index">
+  <div class="product-container">
+    <div class="row">
+      <app-product-item
+        *ngFor="let p of products"
+        [routerLink]="['/', p.id]"
+        [product]="p"
+        class="col-4"
+      ></app-product-item>
+    </div>
+  </div>
+</div>

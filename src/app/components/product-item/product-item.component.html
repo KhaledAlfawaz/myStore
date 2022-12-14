@@ -1,0 +1,20 @@
+<div class="product-container">
+  <img src="{{ product.url }}" alt="product photo" class="product-image" />
+  <h5>{{ product.name }}</h5>
+  <h5>{{ product.price }}</h5>
+  <select
+    [(ngModel)]="selectedOption"
+    name="price"
+    class="select-input form-select"
+  >
+    <option
+      *ngFor="let dummy of ' '.repeat(10).split(''); let x = index"
+      value="{{ x + 1 }}"
+    >
+      {{ x + 1 }}
+    </option>
+  </select>
+  <button type="submit" class="btn btn-primary" (click)="addToCart(product, )">
+    Add to cart
+  </button>
+</div>

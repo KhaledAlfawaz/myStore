@@ -1,0 +1,19 @@
+<div class="detail-container">
+  <div class="detail-item">
+    <img src="{{ product.url }}" alt="product photo" class="img" />
+    <h5>{{ product.name }}</h5>
+    <h5>{{ product.price }}</h5>
+    <h5>{{ product.description }}</h5>
+    <select name="price" class="select-input form-select">
+      <option
+        *ngFor="let dummy of ' '.repeat(10).split(''); let x = index"
+        value="{{ x + 1 }}"
+      >
+        {{ x + 1 }}
+      </option>
+    </select>
+    <button type="submit" class="btn btn-primary">Add to cart</button>
+    <br />
+    <a routerLink="/" class="back-link"> 🠔 Back to product list</a>
+  </div>
+</div>

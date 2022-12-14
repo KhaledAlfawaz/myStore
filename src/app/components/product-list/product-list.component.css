@@ -1,0 +1,15 @@
+.product-index {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 64px;
+}
+
+.row {
+  margin: 0;
+}
+
+.product-container {
+  display: flex;
+  justify-content: center;
+}
