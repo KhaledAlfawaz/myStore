@@ -4,15 +4,18 @@
     <h5>{{ product.name }}</h5>
     <h5>{{ product.price }}</h5>
     <h5>{{ product.description }}</h5>
-    <select name="price" class="select-input form-select">
-      <option
-        *ngFor="let dummy of ' '.repeat(10).split(''); let x = index"
-        value="{{ x + 1 }}"
-      >
-        {{ x + 1 }}
+    <select name="price" class="select-input form-select" #num>
+      <option *ngFor="let n of numbers">
+        {{ n }}
       </option>
     </select>
-    <button type="submit" class="btn btn-primary">Add to cart</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      (click)="addToCart(product, +num.value)"
+    >
+      Add to cart
+    </button>
     <br />
     <a routerLink="/" class="back-link"> 🠔 Back to product list</a>
   </div>

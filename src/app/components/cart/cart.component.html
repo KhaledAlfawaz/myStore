@@ -1,1 +1,24 @@
-<p>cart works!</p>
+<div class="cart-container">
+  <div *ngFor="let c of cart" class="cart-item-details">
+    <div>
+      <img src="{{ c.url }}" alt="product image" class="img" />
+      <br />
+      <div class="">
+        <h5 class="cart-item">{{ c.name }}</h5>
+        <h5 class="cart-item">${{ c.price }}</h5>
+        <label for="amount"
+          >Amount:<input
+            type="number"
+            id="amount"
+            class="number-input"
+            value="{{ c.quantity }}"
+            min="1"
+            max="10"
+            [(ngModel)]="c.quantity"
+            
+        /></label>
+      </div>
+    </div>
+  </div>
+  <h6>Total:$ {{ getTotal() }}</h6>
+</div>

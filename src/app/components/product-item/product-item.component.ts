@@ -1,5 +1,5 @@
 import { product } from './../../models/product';
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -7,10 +7,10 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './product-item.component.html',
   styleUrls: ['./product-item.component.css'],
 })
-export class ProductItemComponent {
+export class ProductItemComponent implements OnInit {
   @Input() product: product;
-  @Output() data: EventEmitter<product> = new EventEmitter();
-  
+  @Input() numbers: number[] = [];
+
   constructor(private productService: ProductService) {
     this.product = {
       id: 1,
@@ -18,10 +18,15 @@ export class ProductItemComponent {
       price: 1,
       url: '',
       description: '',
+      quantity: 0,
     };
   }
+  ngOnInit(): void {
+    this.numbers = this.productService.getNumbers();
+  }
 
-  addToCart(p: product, amount: number): void {
-    this.productService.addToCart(p, amount);
+  addToCart(p: product, quantity: number): void {
+    this.productService.addToCart(p, quantity);
+    // alert('product added succsessfuly' );
   }
 }

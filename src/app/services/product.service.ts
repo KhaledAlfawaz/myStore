@@ -8,30 +8,35 @@ import { Observable } from 'rxjs';
 })
 export class ProductService {
   products: product[] = [];
-  cart: [product, number];
+  cart: product[] = [];
+  items: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   data = '../../assets/data.json';
-  constructor(private http: HttpClient) {
-    this.cart = [
-      {
-        id: 1,
-        name: '',
-        price: 1,
-        url: '',
-        description: '',
-      },
-      1,
-    ];
-  }
+  total: number = 0;
+
+  constructor(private http: HttpClient) {}
 
   getProducts(): Observable<product[]> {
     return this.http.get<product[]>(this.data);
   }
 
-  getCart(): [product, number] {
+  getCart(): product[] {
     return this.cart;
   }
 
-  addToCart(p: product, amount: number): void {
-    this.cart.push(p, amount);
+  getNumbers(): number[] {
+    return this.items;
+  }
+
+  getTotal(): number {
+    return this.total;
+  }
+
+  addToCart(p: product, quantity: number): void {
+    const productExists = this.cart.find((data) => data.id === p.id) as product;
+    if (!productExists) {
+      this.cart.push({ ...p, quantity: quantity });
+    } else {
+      productExists.quantity += quantity;
+    }
   }
 }

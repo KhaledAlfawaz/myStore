@@ -11,6 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 export class ProductItemDetailComponent implements OnInit {
   id: number = 0;
   product: product;
+  numbers: number[] = [];
 
   constructor(
     private productService: ProductService,
@@ -22,6 +23,7 @@ export class ProductItemDetailComponent implements OnInit {
       price: 1,
       url: '',
       description: '',
+      quantity: 0,
     };
   }
   ngOnInit(): void {
@@ -35,7 +37,12 @@ export class ProductItemDetailComponent implements OnInit {
         }
       }
     });
+
+    this.numbers = this.productService.getNumbers();
   }
 
- 
+  addToCart(p: product, quantity: number): void {
+    this.productService.addToCart(p, quantity);
+    // alert('product added succsessfuly');
+  }
 }
