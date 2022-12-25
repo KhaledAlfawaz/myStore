@@ -1,24 +1,23 @@
-<div class="cart-container">
-  <div *ngFor="let c of cart" class="cart-item-details">
-    <div>
+<div class="cart-panel">
+  <div *ngFor="let c of cart" class="cart-container">
+    <div class="cart-item">
       <img src="{{ c.url }}" alt="product image" class="img" />
       <br />
-      <div class="">
-        <h5 class="cart-item">{{ c.name }}</h5>
-        <h5 class="cart-item">${{ c.price }}</h5>
-        <label for="amount"
+      <div class="cart-item-details">
+        <h5 class="cart-panel">{{ c.name }}</h5>
+        <h5 class="cart-panel">${{ c.price }}</h5>
+        <label
           >Amount:<input
             type="number"
-            id="amount"
             class="number-input"
             value="{{ c.quantity }}"
             min="1"
             max="10"
             [(ngModel)]="c.quantity"
-            
+            (click)="changeTotal()"
         /></label>
       </div>
     </div>
   </div>
-  <h6>Total:$ {{ getTotal() }}</h6>
+  <h6 *ngIf="total != 0">Total:${{ total }}</h6>
 </div>

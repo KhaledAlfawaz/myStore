@@ -20,19 +20,20 @@ export class CartComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.cart = this.productService.getCart();
-    this.total = this.getTotal();
+    this.total = this.changeTotal()
   }
 
   ngOnChanges(): void {
-    
+    this.total = this.changeTotal();
   }
 
-  changeTotal(p: product): number {
-    if (p.quantity < 10) this.total += p.price * p.quantity;
-    return this.total;
-  }
-
-  getTotal(): number {
+  changeTotal(): number {
+    this.total = 0;
+    for (let index = 0; index < this.cart.length; index++) {
+      this.total += this.cart[index].quantity * this.cart[index].price
+    }
     return Math.round(this.total * 100) / 100;
   }
+
+  
 }
