@@ -1,23 +1,72 @@
+<div *ngIf="cart.length === 0" class="empty-cart">
+  <h2>Your cart is empty!</h2>
+  <h2>try adding some products</h2>
+</div>
+<form
+  *ngIf="cart.length != 0"
+  action=""
+  class="form-margin form-group col-md-2"
+>
+  <div class="form-items">
+    <h6 class="form-label">Full name</h6>
+    <input
+      class="form-control"
+      type="text"
+      name=""
+      id=""
+      placeholder="(minimum 3 characters)"
+    />
+  </div>
+  <div class="form-items">
+    <h6 class="form-label">Address</h6>
+    <input
+      class="form-control"
+      type="text"
+      name=""
+      id=""
+      placeholder="(minimum 6 characters)"
+    />
+  </div>
+  <div class="form-items">
+    <h6 class="form-label">Credit card number</h6>
+    <input
+      class="form-control"
+      type="text"
+      name=""
+      id=""
+      placeholder="(16-digit number)"
+    />
+  </div>
+  <input class="btn btn-primary" type="submit" value="Submit" />
+</form>
 <div class="cart-panel">
-  <div *ngFor="let c of cart" class="cart-container">
+  <div
+    *ngFor="let c of cart; first as isFirst"
+    [style.margin-top.px]="isFirst ? 64 : 0"
+    class="cart-container"
+  >
     <div class="cart-item">
       <img src="{{ c.url }}" alt="product image" class="img" />
       <br />
       <div class="cart-item-details">
-        <h5 class="cart-panel">{{ c.name }}</h5>
-        <h5 class="cart-panel">${{ c.price }}</h5>
-        <label
-          >Amount:<input
-            type="number"
-            class="number-input"
-            value="{{ c.quantity }}"
-            min="1"
-            max="10"
-            [(ngModel)]="c.quantity"
-            (click)="changeTotal()"
-        /></label>
+        <h5 class="item bold">{{ c.name }}</h5>
+        <h6 class="item">${{ c.price }}</h6>
+        <div class="item">
+          <p>
+            Amount:
+            <input
+              type="number"
+              class="number-input"
+              value="{{ c.quantity }}"
+              min="1"
+              max="10"
+              [(ngModel)]="c.quantity"
+              (click)="changeTotal()"
+            />
+          </p>
+        </div>
       </div>
     </div>
   </div>
-  <h6 *ngIf="total != 0">Total:${{ total }}</h6>
+  <h5 class="total bold" *ngIf="total != 0">Total:${{ total }}</h5>
 </div>
