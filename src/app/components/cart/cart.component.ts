@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css'],
 })
-export class CartComponent implements OnInit, OnChanges {
+export class CartComponent implements OnInit {
   cart: product[] = [];
   total: number = 0;
   fullName: string;
@@ -25,10 +25,6 @@ export class CartComponent implements OnInit, OnChanges {
     this.total = this.getTotal();
   }
 
-  ngOnChanges(): void {
-    this.total = this.getTotal();
-  }
-
   getTotal(): number {
     this.total = 0;
     for (let index = 0; index < this.cart.length; index++) {
@@ -39,6 +35,10 @@ export class CartComponent implements OnInit, OnChanges {
     return this.total;
   }
 
+  changeName(arg: string) {
+    this.productService.setName(arg);
+  }
+
   deleteProduct(p: product): void {
     this.cart = this.cart.filter((data) => data.id !== p.id);
     this.productService.setCart(this.cart.filter((data) => data.id !== p.id));
@@ -46,8 +46,17 @@ export class CartComponent implements OnInit, OnChanges {
     alert(`product ${p.name} is deleted succsessfuly`);
   }
 
+  changeTotal(arg:number , c:product) {
+    if(arg > c.quantity){
+      this.total +=c.price;
+    } else if (arg < c.quantity) {
+      this.total -=c.price;
+    }
+    this.total = Math.round(this.total * 100) / 100;
+    this.productService.setTotal(this.total);
+  }
+
   submitForm() {
-    this.productService.setUser(this.fullName);
     this.productService.setCart([]);
     this.router.navigateByUrl('/confirmation');
   }

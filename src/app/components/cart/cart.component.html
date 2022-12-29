@@ -17,6 +17,7 @@
       name="name"
       placeholder="(minimum 3 characters)"
       [(ngModel)]="fullName"
+      (ngModelChange)="changeName($event)"
       minlength="3"
       maxlength="30"
       required
@@ -71,11 +72,12 @@
               value="{{ c.quantity }}"
               min="1"
               max="10"
+              (ngModelChange)="changeTotal($event , c)"
               [(ngModel)]="c.quantity"
-              (click)="getTotal()"
+              onKeyDown="return false"
             />
           </p>
-          <input type="submit" class="btn btn-danger" value="Delete"   (click)="deleteProduct(c)">
+          <input type="submit" class="btn btn-danger" value="Delete" (click)="deleteProduct(c)">
         </div>
       </div>
     </div>

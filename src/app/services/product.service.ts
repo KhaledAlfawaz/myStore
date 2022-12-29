@@ -44,7 +44,7 @@ export class ProductService {
     this.total = t;
   }
 
-  setUser(n: string): void {
+  setName(n: string): void {
     this.fullName = n;
   }
 
