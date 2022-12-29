@@ -1,0 +1,20 @@
+<div class="confirmation-container">
+  <div class="confirmation-items">
+    <h1 class="confirmation-header confirmation-item">Success!🎉</h1>
+    <p class="confirmation-item">
+      Thank you, <b>{{ fullName }}</b>
+    </p>
+    <p class="confirmation-item">
+      Your <b>${{ total }}</b> order is confirmed!
+    </p>
+    <p class="confirmation-item">
+      Please allow 1-3 business day(s) for shipping.
+    </p>
+    <input
+      routerLink="/productList"
+      class="btn btn-primary"
+      type="button"
+      value="Back to product list"
+    />
+  </div>
+</div>

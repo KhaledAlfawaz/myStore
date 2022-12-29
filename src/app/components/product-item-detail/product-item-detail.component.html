@@ -1,9 +1,11 @@
 <div class="detail-container">
-  <div class="detail-item">
+  <div class="col-3">
     <img src="{{ product.url }}" alt="product photo" class="img" />
-    <h5>{{ product.name }}</h5>
-    <h5>{{ product.price }}</h5>
-    <h5>{{ product.description }}</h5>
+  </div>
+  <div>
+    <h2 class=""><b>{{ product.name }}</b></h2>
+    <h5 class="padding">${{ product.price }}</h5>
+    <h5 class="padding">{{ product.description }}</h5>
     <select name="price" class="select-input form-select" #num>
       <option *ngFor="let n of numbers">
         {{ n }}

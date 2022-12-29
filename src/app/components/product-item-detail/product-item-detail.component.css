@@ -3,10 +3,15 @@ img {
   width: 320px;
 }
 
+
+
+
+
 .select-input {
   width: 108px;
   margin-bottom: 8px;
 }
+
 
 .detail-container {
   display: flex;
@@ -15,19 +20,27 @@ img {
   margin-top: 64px;
 }
 
-a {
-  text-decoration: none;
-}
 
 a:hover {
   text-decoration: underline;
 }
 
+
+.padding {
+  padding: 5% 0;
+}
+
+
+button {
+  margin: 0 0 10px 0;
+}
+
+
 .detail-item {
-  margin-left: 128px;
-  margin-right: 128px;
+  margin: 0 128px;
 }
 
 .back-link {
-  margin-top: 8px;
+  margin: 100px 0 0 0;
+  text-decoration: none;
 }

@@ -43,6 +43,6 @@ export class ProductItemDetailComponent implements OnInit {
 
   addToCart(p: product, quantity: number): void {
     this.productService.addToCart(p, quantity);
-    // alert('product added succsessfuly');
+    alert(`${p.name} added succsessfuly`);
   }
 }
