@@ -86,6 +86,11 @@ img {
   padding: 0;
 }
 
+.error {
+  color: red;
+  width: 100%;
+  margin: 2% 0 0 0;
+}
 
 p {
   width: 10rem;

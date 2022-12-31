@@ -28,10 +28,6 @@ export class ProductService {
     this.cart = c;
   }
 
-  deleteFromCart(c: product) {
-    this.cart = this.cart.filter((data) => data.id !== c.id);
-  }
-
   getNumbers(): number[] {
     return this.items;
   }
@@ -56,10 +52,12 @@ export class ProductService {
     const productExists = this.cart.find((data) => data.id === p.id) as product;
     if (!productExists) {
       this.cart.push({ ...p, quantity: quantity });
+      alert(`${p.name} added succsessfuly`);
     } else if (productExists.quantity === 10) {
       alert(`all of ${productExists.name} stock is in the cart`);
-    } else {
+    } else if (productExists.quantity <= 10) {
       productExists.quantity += quantity;
+      alert(`${productExists.name} added succsessfuly`);
     }
   }
 }

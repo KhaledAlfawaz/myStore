@@ -18,10 +18,15 @@
       placeholder="(minimum 3 characters)"
       [(ngModel)]="fullName"
       (ngModelChange)="changeName($event)"
+      #name="ngModel"
       minlength="3"
       maxlength="30"
+      pattern="[a-zA-Z ]*"
       required
     />
+    <div *ngIf="name.invalid && name.dirty">
+      <p class="error">minimum 3 characters and letters Only.</p>
+    </div>
   </div>
   <div class="form-items">
     <h6 class="form-label">Address</h6>
@@ -31,10 +36,14 @@
       name="address"
       placeholder="(minimum 6 characters)"
       [(ngModel)]="address"
+      #addr="ngModel"
       minlength="6"
       maxlength="30"
       required
     />
+    <div *ngIf="addr.invalid && addr.dirty">
+      <p class="error">minimum 6 characters.</p>
+    </div>
   </div>
   <div class="form-items">
     <h6 class="form-label">Credit card number</h6>
@@ -44,14 +53,24 @@
       name="card number"
       placeholder="(16-digit number)"
       [(ngModel)]="cardNumber"
+      #cardNum="ngModel"
       maxlength="16"
       minlength="16"
+      pattern="\d*"
       required
     />
+    <div *ngIf="cardNum.invalid && cardNum.dirty">
+      <p class="error">16 digit and only numbers</p>
+    </div>
   </div>
-  <input class="btn btn-primary" [disabled]="form.invalid" type="submit" value="Submit" />
+  <input
+    class="btn btn-primary"
+    [disabled]="form.invalid"
+    type="submit"
+    value="Submit"
+  />
 </form>
-<div  class="cart-panel">
+<div class="cart-panel">
   <div
     *ngFor="let c of cart; first as isFirst"
     [style.margin-top.px]="isFirst ? 64 : 0"
@@ -72,12 +91,17 @@
               value="{{ c.quantity }}"
               min="1"
               max="10"
-              (ngModelChange)="changeTotal($event , c)"
+              (ngModelChange)="changeTotal($event, c)"
               [(ngModel)]="c.quantity"
               onKeyDown="return false"
             />
           </p>
-          <input type="submit" class="btn btn-danger" value="Delete" (click)="deleteProduct(c)">
+          <input
+            type="submit"
+            class="btn btn-danger"
+            value="Delete"
+            (click)="deleteProduct(c)"
+          />
         </div>
       </div>
     </div>

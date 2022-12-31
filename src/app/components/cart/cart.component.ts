@@ -46,11 +46,11 @@ export class CartComponent implements OnInit {
     alert(`product ${p.name} is deleted succsessfuly`);
   }
 
-  changeTotal(arg:number , c:product) {
-    if(arg > c.quantity){
-      this.total +=c.price;
+  changeTotal(arg: number, c: product) {
+    if (arg > c.quantity) {
+      this.total += c.price;
     } else if (arg < c.quantity) {
-      this.total -=c.price;
+      this.total -= c.price;
     }
     this.total = Math.round(this.total * 100) / 100;
     this.productService.setTotal(this.total);
