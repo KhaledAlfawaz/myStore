@@ -4,16 +4,16 @@ This project is a frontend for a store called "MyStore". It is a single-page app
 
 ## Project structure
 
-├───app
-│   ├───components
-│   │   ├───cart
-│   │   ├───confirmation
-│   │   ├───product-item
-│   │   ├───product-item-detail
-│   │   └───product-list
-│   ├───models
-│   └───services
-└───assets
+- ├───app
+- │   ├───components
+- │   │   ├───cart
+- │   │   ├───confirmation
+- │   │   ├───product-item
+- │   │   ├───product-item-detail
+- │   │   └───product-list
+- │   ├───models
+- │   └───services
+- └───assets
 
 ## Project setup
 
